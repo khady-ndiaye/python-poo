@@ -27,14 +27,14 @@ def main():
             ship.display_state()
 
         elif choix == "2":
-            part_name = input("Nom de la pièce à remplacer (Mât, Coque, Voile) : ")
-            new_material = input("Nouveau matériau : ")
+            part_name = input("Nom de la pièce à remplacer (Mât, Coque, Voile) : ").strip().lower()
+            new_material = input("Nouveau matériau : ").strip().lower()
             new_part = Part(part_name, new_material)
             ship.replace_part(part_name, new_part)
 
         elif choix == "3":
-            part_name = input("Nom de la pièce à modifier (Mât, Coque, Voile) : ")
-            new_material = input("Nouveau matériau : ")
+            part_name = input("Nom de la pièce à modifier (Mât, Coque, Voile) : ").strip().lower()
+            new_material = input("Nouveau matériau : ").strip().lower()
             ship.change_part(part_name, new_material)
 
         elif choix == "4":

@@ -4,9 +4,9 @@ class Ship:
     def __init__(self, name):
         self.name = name
         self.__parts = {
-            "Mât": Part("Mât", "Bois"),
-            "Coque": Part("Coque", "Bois"),
-            "Voile": Part("Voile", "Coton")
+            "mât": Part("mât", "bois"),
+            "coque": Part("coque", "acier"),
+            "voile": Part("voile", "coton")
         }
         self.history = []  # Liste pour suivre les modifications
     
@@ -20,18 +20,22 @@ class Ship:
         
         if part_name in self.__parts:
             old_part = self.__parts[part_name]
+            print(f"\nAvant remplacement: ID de {part_name} = {id(self.__parts[part_name])}")
             self.__parts[part_name] = new_part
             self.history.append(f"Remplacement de {old_part} par {new_part}")
             print(f"→ {old_part} a été remplacé par {new_part}.")
+            print(f"Après remplacement: ID de {part_name} = {id(self.__parts[part_name])}")
         else:
             print("Cette pièce n'existe pas.")
     #Modifie le matériau d'une pièce
     def change_part(self, part_name, new_material):
         if part_name in self.__parts:
+            print(f"\nAvant Modification: ID de {part_name} = {id(self.__parts[part_name])}")
             old_material = self.__parts[part_name].material
             self.__parts[part_name].change_material(new_material)
             self.history.append(f"Modification de {part_name} ({old_material} → {new_material})")
             print(f"→ Le matériau de {part_name} a été changé en {new_material}.")
+            print(f"Après Modification: ID de {part_name} = {id(self.__parts[part_name])}")
         else:
             print("Cette pièce n'existe pas.")
     #Affiche l'historique des modifications
